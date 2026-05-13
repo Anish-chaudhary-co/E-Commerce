@@ -1,0 +1,52 @@
+.app {
+  min-height: 100vh;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+.app.light {
+  background-color: white;
+  color: black;
+}
+.app.dark {
+  background-color: black;
+  color: white;
+}
+
+.container {
+  display: flex;
+}
+
+.container input {
+  display: none;
+}
+
+.circle {
+  position: relative;
+  cursor: pointer;
+  height: 15px;
+  width: 30px;
+  border: 1px solid black;
+  border-radius: 30px;
+  background: #171616;
+  transition: 0.3s;
+}
+
+.circle::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 15px;
+  width: 15px;
+  background-color: rgb(234, 113, 7);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .circle {
+  background-color: #e7eaed;
+}
+
+input:checked + .circle::before {
+  transform: translateX(15px);
+}
