@@ -10,6 +10,7 @@ const UIFeatures = ({
     setShowDetails(true);
   };
 
+  //this for sorting the products based on the price selected by the user, if price is not selected then it will return the original products array
   const sortedProducts = price ? [...products].sort(price) : products;
 
   return (
