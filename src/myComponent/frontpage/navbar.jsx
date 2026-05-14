@@ -7,15 +7,10 @@ import { ThemeContext } from "../Toggle-btn/ThemeContext";
 import Toggle from "../Toggle-btn/Toggle";
 import './navbar.css';
 
-export default function Navbar() {
+export default function Navbar({ handleThemeToggle, theme }) {
   const navigate = useNavigate();
-  const [theme, setTheme] = useState("Dark");
   const [ShowInput, setShowInput] = useState(false);
   const inputRef = useRef(null);
-
-  const handleThemeToggle = () => {
-    setTheme((prev) => (prev === "Dark" ? "Light" : "Dark"));
-  };
 
   useEffect(()=>{
     if(ShowInput){
@@ -60,7 +55,7 @@ export default function Navbar() {
             <MdShoppingCart className="hover:text-red-400"/>
           
           </div>
-          <Toggle handleThemeToggle={handleThemeToggle} theme={theme}/>
+          <Toggle  handleThemeToggle={handleThemeToggle} theme={theme}/>
             
         </div>
 

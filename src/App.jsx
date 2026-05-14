@@ -10,11 +10,17 @@ import Shop from "./myComponent/Shop/Shop.jsx";
 //importing cart
 import MyCart from "./myComponent/cart/MyCart.jsx";
 
-
 function App() {
 
   const [cartItems, setCartItems] = useState([]);
   const [itemDetails, setItemDetails] = useState({});
+  const [theme, setTheme] = useState("Dark");
+
+const handleThemeToggle = () => {
+  const newTheme = theme === "Dark" ? "Light" : "Dark";
+  setTheme(newTheme);
+  document.body.className = newTheme === "Dark" ? "dark" : "light";
+};
   
   console.log(cartItems);
   
@@ -42,7 +48,7 @@ function App() {
       path: "/cart",
       element: (
         <>
-          <Navbar />
+          <Navbar handleThemeToggle={handleThemeToggle} theme={theme}/>
           <MyCart cartItems={cartItems} setCartItems={setCartItems}/>
         </>
       ),
