@@ -14,27 +14,27 @@ export default function Footer() {
         <div>
             <h1 className='font-bold'>SHOP</h1>
             <ul>
-                <li><a href="#">All Product</a></li>
-                <li><a href="#">Clothing</a></li>
-                <li><a href="#">Accessories</a></li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#">All Product</a></li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#">Clothing</a></li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#">Accessories</a></li>
             </ul>
         </div>
 
         <div>
             <h1 className='font-bold'>COMPANY</h1>
             <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Sustainability</a></li>
-                <li><a href="#">Careers</a></li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#">About Us</a></li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#">Sustainability</a></li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#">Careers</a></li>
             </ul>
         </div>
 
         <div>
             <h1 className='font-bold'>SUPPORT</h1>
             <ul>
-                <li><a href="#"></a>Contact Us</li>
-                <li><a href="#"></a>FAQs</li>
-                <li><a href="#"></a>Shipping</li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#"></a>Contact Us</li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#"></a>FAQs</li>
+                <li className='hover:text-red-500 cursor-pointer'><a href="#"></a>Shipping</li>
             </ul>
         </div>
 
