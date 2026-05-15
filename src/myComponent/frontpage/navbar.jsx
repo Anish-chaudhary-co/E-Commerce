@@ -55,7 +55,7 @@ export default function Navbar({ handleThemeToggle, theme }) {
             <MdShoppingCart className="hover:text-red-400"/>
           
           </div>
-          <Toggle  handleThemeToggle={handleThemeToggle} theme={theme}/>
+          <Toggle   handleThemeToggle={handleThemeToggle} theme={theme}/>
             
         </div>
 

@@ -1,6 +1,8 @@
 import "./App.css";
 import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ThemeProvider } from "./ThemeContext";
+import { CartProvider } from "./CartContext";
 import Navbar from "./myComponent/frontpage/navbar.jsx";
 import Community from "./myComponent/frontpage/community.jsx";
 import Footer from "./myComponent/frontpage/footer.jsx";
@@ -74,9 +76,12 @@ const handleThemeToggle = () => {
 
   return (
     <>
-      <div>
-        <RouterProvider router={router} />
-      </div>
+        <ThemeProvider>
+          <CartProvider>
+            <RouterProvider router={router} />
+          </CartProvider>
+        </ThemeProvider>
+      
     </>
   );
 }

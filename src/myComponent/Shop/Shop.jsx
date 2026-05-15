@@ -6,6 +6,7 @@ import products from "../productList/productList.js";
 import ProductDetails from "./ProductDetails.jsx";
 
 const Shop = ({ addToCart, onSelect, cartItems, itemDetails }) => {
+
   const [selected, setSelected] = useState("All Categories");
   const [selectedPrice, setSelectedPrice] = useState("Featured");
   const [showDetails, setShowDetails] = useState(false);
