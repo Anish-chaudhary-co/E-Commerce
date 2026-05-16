@@ -13,35 +13,27 @@ import Shop from "./myComponent/Shop/Shop.jsx";
 import MyCart from "./myComponent/cart/MyCart.jsx";
 
 function App() {
-
   //this is for category item to shop page
   const [categoryValue, setCategoryValue] = useState("");
-  
-    const [selected, setSelected] = useState("All Categories");
-  
-    const handleSelected = (value) => {
-      setSelected(value);
-    };
+  const [selected, setSelected] = useState("All Categories");
 
   const [cartItems, setCartItems] = useState([]);
   const [itemDetails, setItemDetails] = useState({});
   const [theme, setTheme] = useState("Dark");
 
-const handleThemeToggle = () => {
-  const newTheme = theme === "Dark" ? "Light" : "Dark";
-  setTheme(newTheme);
-  document.body.className = newTheme === "Dark" ? "dark" : "light";
-};
-  
-  
-  const addToCart = (newItem) => {
+  const handleThemeToggle = () => {
+    const newTheme = theme === "Dark" ? "Light" : "Dark";
+    setTheme(newTheme);
+    document.body.className = newTheme === "Dark" ? "dark" : "light";
+  };
 
-  const existingItem = cartItems.find((item) => item.name === newItem.name);
-  if (existingItem) {
-    alert("Item already in cart");
-    return null; // Don't render the item again
-  }
-  setCartItems([...cartItems, newItem]);
+  const addToCart = (newItem) => {
+    const existingItem = cartItems.find((item) => item.name === newItem.name);
+    if (existingItem) {
+      alert("Item already in cart");
+      return null; // Don't render the item again
+    }
+    setCartItems([...cartItems, newItem]);
   };
 
   const router = createBrowserRouter([
@@ -50,7 +42,12 @@ const handleThemeToggle = () => {
       element: (
         <>
           <Navbar />
-          <Home categoryValue={categoryValue} setCategoryValue={setCategoryValue} selected={categoryValue ||selected} setSelected={setSelected} />
+          <Home
+            categoryValue={categoryValue}
+            setCategoryValue={setCategoryValue}
+            selected={categoryValue || selected}
+            setSelected={setSelected}
+          />
         </>
       ),
     },
@@ -58,8 +55,8 @@ const handleThemeToggle = () => {
       path: "/cart",
       element: (
         <>
-          <Navbar handleThemeToggle={handleThemeToggle} theme={theme}/>
-          <MyCart cartItems={cartItems} setCartItems={setCartItems}/>
+          <Navbar handleThemeToggle={handleThemeToggle} theme={theme} />
+          <MyCart cartItems={cartItems} setCartItems={setCartItems} />
         </>
       ),
     },
@@ -68,7 +65,15 @@ const handleThemeToggle = () => {
       element: (
         <>
           <Navbar />
-          <Shop addToCart={addToCart} onSelect={setItemDetails} cartItems={cartItems} itemDetails={itemDetails} selected={selected} setSelected={setSelected} categoryValue={categoryValue} />
+          <Shop
+            addToCart={addToCart}
+            onSelect={setItemDetails}
+            cartItems={cartItems}
+            itemDetails={itemDetails}
+            selected={selected}
+            setSelected={setSelected}
+            categoryValue={categoryValue}
+          />
         </>
       ),
     },
@@ -84,12 +89,11 @@ const handleThemeToggle = () => {
 
   return (
     <>
-        <ThemeProvider>
-          <CartProvider>
-            <RouterProvider router={router} />
-          </CartProvider>
-        </ThemeProvider>
-      
+      <ThemeProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </ThemeProvider>
     </>
   );
 }

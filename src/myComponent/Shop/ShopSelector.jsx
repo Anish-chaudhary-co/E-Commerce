@@ -6,9 +6,14 @@ import {
 import SelectorUI from "./SelectorUI";
 import PriceRangeBTN from "./priceRange/PriceRangeBTN";
 
-const ShopSelector = ({ Selected, setSelected, selectedPrice, setSelectedPrice}) => {
+const ShopSelector = ({
+  Selected,
+  setSelected,
+  selectedPrice,
+  setSelectedPrice,
+}) => {
   const [Open, setOpen] = useState(false);
-    
+
   return (
     <>
       {/* to change the product name dynamic according to the selection */}
@@ -20,8 +25,17 @@ const ShopSelector = ({ Selected, setSelected, selectedPrice, setSelectedPrice})
       <div className="flex justify-between m-20">
         {/* this is for input */}
         <div className="flex gap-2">
-          <input type="text" placeholder="Search product...." className="border border-gray-200 w-232 p-2 h-9 rounded-lg" />
-          <button type="submit" className="border border-gray-200 w-20 h-9 rounded-lg cursor-pointer">Search</button>
+          <input
+            type="text"
+            placeholder="Search product...."
+            className="border border-gray-200 w-232 p-2 h-9 rounded-lg"
+          />
+          <button
+            type="submit"
+            className="border border-gray-200 w-20 h-9 rounded-lg cursor-pointer"
+          >
+            Search
+          </button>
         </div>
         <div>
           <div
@@ -39,10 +53,20 @@ const ShopSelector = ({ Selected, setSelected, selectedPrice, setSelectedPrice})
 
           {/* this part is to print all the array if open is false or it work like if(open===false) 
 if it is close than it open and if it is open than it will close*/}
-          {Open && <SelectorUI Selected={Selected} setSelected={setSelected} setOpen={setOpen} Open={Open}/>}
+          {Open && (
+            <SelectorUI
+              Selected={Selected}
+              setSelected={setSelected}
+              setOpen={setOpen}
+              Open={Open}
+            />
+          )}
         </div>
         <div>
-          <PriceRangeBTN selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} />
+          <PriceRangeBTN
+            selectedPrice={selectedPrice}
+            setSelectedPrice={setSelectedPrice}
+          />
         </div>
       </div>
     </>
