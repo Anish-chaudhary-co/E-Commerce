@@ -1,6 +1,6 @@
 
 
-const SelectorUI = ({setSelected, setOpen }) => {
+const SelectorUI = ({setSelected, setOpen}) => {
   const items = [
     "All Categories",
     "Clothing",

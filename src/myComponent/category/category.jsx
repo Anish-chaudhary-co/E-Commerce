@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Catogo from './catogo.jsx'
 import Cloth from '../../photos/cloth.jpg'
@@ -6,12 +7,16 @@ import Accessor from '../../photos/accessor.png'
 import Footware from '../../photos/footware.jpg'
 import Home from '../../photos/home.jpg'
 
-export default function category() {
+export default function category({ selected, setSelected, setCategoryValue }) {
   const [ProductValue,setProductValue] = useState("");
-  const handleProductValue =(title)=>{
+  const navigate = useNavigate();
+  const handleProductValue =(title,value)=>{
     setProductValue(title)
-    console.log(ProductValue);
-  }
+    setCategoryValue(value);
+    setSelected(value);
+    navigate("/Shop");
+    console.log(selected);
+     }
   
   
   return (
@@ -30,10 +35,10 @@ export default function category() {
 
         <div className='flex flex-wrap gap-8 ml-18 mt-4 mb-20'> 
 
-        <Catogo image={Cloth} title="Clothes" count="2" onClick={()=>handleProductValue()}/>
-        <Catogo image={Accessor} title="Accessories" count="5" onClick={()=>handleProductValue()}/>
-        <Catogo image={Footware} title="Shoes" count="4" onClick={()=>handleProductValue()}/>
-        <Catogo image={Home} title="Home appliances" count="3" onClick={()=>handleProductValue()}/>
+        <Catogo image={Cloth} title="Clothes" count="2" onClick={(e) => handleProductValue("Clothes", "Clothing")}/>
+        <Catogo image={Accessor} title="Accessories" count="5" onClick={(e) => handleProductValue("Accessories", "Accessories")}/>
+        <Catogo image={Footware} title="Shoes" count="4" onClick={(e) => handleProductValue("Shoes", "Footwear")}/>
+        <Catogo image={Home} title="Home appliances" count="3" onClick={(e) => handleProductValue("Home appliances", "Home & Living")}/>
           
           </div>
     </div>

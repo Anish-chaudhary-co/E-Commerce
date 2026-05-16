@@ -5,11 +5,11 @@ import products from "../productList/productList.js";
 
 import ProductDetails from "./ProductDetails.jsx";
 
-const Shop = ({ addToCart, onSelect, cartItems, itemDetails }) => {
+const Shop = ({ addToCart, onSelect, cartItems, itemDetails, categoryValue, selected, setSelected }) => {
 
-  const [selected, setSelected] = useState("All Categories");
   const [selectedPrice, setSelectedPrice] = useState("Featured");
   const [showDetails, setShowDetails] = useState(false);
+
 
   const categoryMap = {
     "All Categories": null,
@@ -18,6 +18,8 @@ const Shop = ({ addToCart, onSelect, cartItems, itemDetails }) => {
     "Footwear": "shoes",
     "Home & Living": "house-appliances"
   };
+
+  // selected = categoryValue || selected;
 
   const priceMap = {
     "Featured": null,
@@ -29,7 +31,7 @@ const Shop = ({ addToCart, onSelect, cartItems, itemDetails }) => {
 
   const filteredProducts = categoryMap[selected]
     ? products.filter((product) => product.category === categoryMap[selected])
-    : products;
+    :products;
 
   return (
     <>

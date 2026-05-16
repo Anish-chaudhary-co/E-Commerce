@@ -14,6 +14,15 @@ import MyCart from "./myComponent/cart/MyCart.jsx";
 
 function App() {
 
+  //this is for category item to shop page
+  const [categoryValue, setCategoryValue] = useState("");
+  
+    const [selected, setSelected] = useState("All Categories");
+  
+    const handleSelected = (value) => {
+      setSelected(value);
+    };
+
   const [cartItems, setCartItems] = useState([]);
   const [itemDetails, setItemDetails] = useState({});
   const [theme, setTheme] = useState("Dark");
@@ -24,7 +33,6 @@ const handleThemeToggle = () => {
   document.body.className = newTheme === "Dark" ? "dark" : "light";
 };
   
-  console.log(cartItems);
   
   const addToCart = (newItem) => {
 
@@ -42,7 +50,7 @@ const handleThemeToggle = () => {
       element: (
         <>
           <Navbar />
-          <Home />
+          <Home categoryValue={categoryValue} setCategoryValue={setCategoryValue} selected={categoryValue ||selected} setSelected={setSelected} />
         </>
       ),
     },
@@ -60,7 +68,7 @@ const handleThemeToggle = () => {
       element: (
         <>
           <Navbar />
-          <Shop addToCart={addToCart} onSelect={setItemDetails} cartItems={cartItems} itemDetails={itemDetails}/>
+          <Shop addToCart={addToCart} onSelect={setItemDetails} cartItems={cartItems} itemDetails={itemDetails} selected={selected} setSelected={setSelected} categoryValue={categoryValue} />
         </>
       ),
     },

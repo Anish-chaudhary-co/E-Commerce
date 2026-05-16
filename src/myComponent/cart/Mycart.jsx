@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../frontpage/navbar.jsx";
 import Footer from "../frontpage/footer.jsx";
+import Shop from "../Shop/Shop.jsx";
 import Cart from "./Cart.jsx";
 
 const MyCart = ({ cartItems, setCartItems }) => {
@@ -15,9 +17,11 @@ const MyCart = ({ cartItems, setCartItems }) => {
     );
   };
   const onDelete = (idx) => {
-    setCartItems(items => items.filter((_, i) => i !== idx));
-    setQuantities(q => q.filter((_, i) => i !== idx));
+    setCartItems((items) => items.filter((_, i) => i !== idx));
+    setQuantities((q) => q.filter((_, i) => i !== idx));
   };
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -47,7 +51,10 @@ const MyCart = ({ cartItems, setCartItems }) => {
               />
             ))}
             <hr className="mt-5 text-gray-400 w-230" />
-            <div className="mt-20 ml-13 border border-gray-400 w-50 flex justify-center p-1 rounded-md cursor-pointer hover:bg-gray-200 ">
+            <div
+              className="mt-20 ml-13 border border-gray-400 w-50 flex justify-center p-1 rounded-md cursor-pointer hover:bg-gray-200 "
+              onClick={() => navigate("/Shop")}
+            >
               Continue Shopping.....
             </div>
           </>

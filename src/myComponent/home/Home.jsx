@@ -6,12 +6,12 @@ import FeaturedFilter from "../features/FeaturedFilter";
 import Community from "../frontpage/community";
 import Footer from "../frontpage/footer";
 
-const Home = () => {
+const Home = ({ setCategoryValue, categoryValue, selected, setSelected }) => {
   return (
       <div className="flex flex-col gap-10">
         <Navbar />
         <Introduction />
-        <Category />
+        <Category setCategoryValue={setCategoryValue} categoryValue={categoryValue} selected={selected} setSelected={setSelected}/>
         <FeaturedFilter />
         <Community />
         <Footer />
