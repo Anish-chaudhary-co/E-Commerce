@@ -15,7 +15,7 @@ export default function introduction() {
         <div className='font-italic'>
         <h1 className='text-3xl font-bold mt-4'>Crafted for</h1>
         <h1 className='text-6xl font-bold text-orange-600'>Comfort & Style</h1>
-        <p className='mt-4 text-gray-600'>Discover our latest arrivals, designed to elevate your everyday look with a blend of comfort and style.</p>
+        <p className='mt-4 text-gray-600'>lalalalal Discover our latest arrivals, designed to elevate your everyday look with a blend of comfort and style.</p>
         </div>
         <div className='flex gap-5'>
         <div className='flex justify-center items-center gap-5 w-50 cursor-pointer bg-orange-600 text-white mt-6 p-2 rounded-lg shadow-[0px_8px_15px_-5px_rgba(0,0,0,0.2)]'>
