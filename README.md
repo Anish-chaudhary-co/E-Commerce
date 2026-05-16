@@ -9,27 +9,32 @@ ShopByMe is a modern, responsive E-commerce web application built with React, Vi
 ```
 shopbyme/
 │
-├── public/                # Static assets
+├── dist/                   # Built app (production output after `npm run build`)
+├── index.html            # Root HTML shell (Vite entry)
 ├── src/
-│   ├── App.jsx            # Main app component, routing setup
+│   ├── App.jsx           # Routes, layouts, wraps providers
 │   ├── main.jsx           # React entry point
 │   ├── index.css          # Tailwind CSS entry
-│   ├── App.css            # Global styles
-│   ├── assets/            # Product images
-│   ├── myComponent/       # All main UI components
-│   │   ├── cart/          # Cart and cart item display
-│   │   ├── category/      # Category browsing
-│   │   ├── Clothes/       # Clothes section
-│   │   ├── features/      # Featured products and UI features
-│   │   ├── frontpage/     # Navbar, footer, intro, community
-│   │   ├── home/          # Home page
-│   │   ├── productList/   # Product data
-│   │   ├── Shop/          # Shop, product details, selectors
-│   │   └── Toggle-btn/    # Theme toggle (dark/light)
-│   └── photos/            # Additional images (if any)
-├── tailwind.config.js     # Tailwind CSS config
-├── vite.config.js         # Vite config
-├── package.json           # Project metadata and scripts
+│   ├── App.css            # Global / app-wide styles
+│   ├── ThemeContext.jsx   # Dark / light theme context provider
+│   ├── CartContext.jsx    # Shopping cart context provider
+│   ├── assets/            # Product images used in listings
+│   ├── photos/           # Category, hero, logo, cart UI images
+│   └── myComponent/       # Page and feature UI
+│       ├── cart/          # Cart page and cart line items
+│       ├── category/      # Category grid and cards
+│       ├── Clothes/       # Clothes-focused view / section
+│       ├── features/      # Featured products and shop card UI
+│       ├── frontpage/     # Navbar, footer, intro, contact
+│       ├── home/          # Home page composition
+│       ├── productList/   # Product data (`productList.js`)
+│       ├── Shop/          # Shop, filters, details, all products
+│       │   └── priceRange/# Price-range filter controls
+│       └── Toggle-btn/    # Theme toggle component + helper context import
+├── tailwind.config.js     # Tailwind CSS configuration
+├── vite.config.js        # Vite bundler configuration
+├── package.json           # Scripts and dependency list
+├── package-lock.json      # Locked dependency versions
 └── README.md              # Project documentation
 ```
 
@@ -38,11 +43,14 @@ shopbyme/
 ## 🧩 Main Components & Folders
 
 ### `src/App.jsx`
-- Sets up the main routes: Home, Shop, Cart, Community.
-- Manages global state for cart items and selected product details.
+- Sets up the main routes (Home, Shop, Cart, Community) and wraps the app with theme and cart providers.
 
 ### `src/main.jsx`
-- React entry point, renders `<App />`.
+- React entry point; mounts `<App />` into `index.html`.
+
+### `src/ThemeContext.jsx` & `src/CartContext.jsx`
+- **`ThemeContext.jsx`**: shares theme state (dark/light) and `handleThemeToggle` with the tree via `ThemeProvider`.
+- **`CartContext.jsx`**: shares `cartItems`, add-to-cart helpers, and `itemDetails` for product detail flows.
 
 ### `src/index.css`
 - Imports Tailwind CSS base, components, and utilities.
@@ -52,46 +60,44 @@ shopbyme/
 ### `src/myComponent/`
 
 #### `cart/`
-- **Cart.jsx**: Displays a single cart item with quantity controls and delete button.
-- **Mycart.jsx**: Renders the shopping cart page, manages item quantities, and handles item removal.
-- **CartItems.jsx**: (If present) Used for rendering individual cart item details.
+- **Cart.jsx**: Single line item row (quantity controls, remove).
+- **Mycart.jsx**: Shopping cart route—lists items and adjusts totals / removal.
+- **CartItems.jsx**: Cart line presentation helpers reused by **`Mycart.jsx`**.
 
 #### `category/`
 - **category.jsx**: Displays product categories (Clothes, Accessories, Shoes, Home appliances) with images and counts.
 - **catogo.jsx**: Renders a single category card.
 
 #### `Clothes/`
-- **Clothes.jsx**: (If present) Displays clothing products.
+- **Clothes.jsx**: Clothing-category page or section for the apparel collection.
 
 #### `features/`
-- **FeaturedFilter.jsx**: Shows featured products (e.g., price >= 9000).
-- **features.jsx**: (If present) Additional feature components.
-- **uiFeatures.jsx**: Renders product cards for the shop, handles product detail modal.
+- **FeaturedFilter.jsx**: Shows featured products (e.g., price threshold filter).
+- **features.jsx**: Feature-related compose components.
+- **uiFeatures.jsx**: Product card UI used in shop flows (including detail interaction).
 
 #### `frontpage/`
-- **navbar.jsx**: Main navigation bar with links, search, cart icon, and theme toggle.
-- **footer.jsx**: Footer with shop info, links, and support.
-- **introduction.jsx**: Hero section with new collection, stats, and call-to-action.
-- **community.jsx**: (If present) Community or contact section.
-- **Navbar.css**: Styles for the navbar.
+- **navbar.jsx**: Top navigation—links, search, cart icon, theme toggle (`Navbar.css`).
+- **footer.jsx**: Footer with shop info and links.
+- **introduction.jsx**: Hero / landing section above the fold.
+- **community.jsx**: Contact-focused content for the Community route.
 
 #### `home/`
 - **Home.jsx**: Home page layout, includes navbar, intro, categories, featured products, community, and footer.
 
 #### `productList/`
-- **productList.js**: Exports an array of product objects (name, title, category, image, price, discount, rating).
+- **productList.js**: Static product catalogue (each item includes name, category, `background`/image binding, pricing, discounts, ratings).
 
 #### `Shop/`
-- **Shop.jsx**: Main shop page, category and price filtering, product grid, and product details modal.
-- **ProductDetails.jsx**: Modal for viewing and adding a product to the cart.
-- **ShopSelector.jsx**: UI for selecting category and price filters.
-- **SelectorUI.jsx**: (If present) Additional selector UI.
-- **allProduct.jsx**: (If present) Displays all products.
-- **priceRange/**: Price range filter components.
+- **Shop.jsx**: Shop page shell—filters, grid, ties into product detail.
+- **ProductDetails.jsx**: Product detail overlay / modal and add-to-cart entry.
+- **ShopSelector.jsx** & **SelectorUI.jsx**: Category and filter controls.
+- **allProduct.jsx**: Renders full product grids when showing everything.
+- **priceRange/**: **PriceRange.jsx** / **PriceRangeBTN.jsx** for min–max pricing.
 
 #### `Toggle-btn/`
-- **ThemeContext.js**: Context for theme (dark/light mode).
-- **Toggle.jsx**: Theme toggle button.
+- **Toggle.jsx**: Styled dark/light checkbox toggle used in the navbar.
+- **ThemeContext.js**: Navbar-side theme context wiring used alongside the root **`src/ThemeContext.jsx`** provider.
 
 ---
 
@@ -112,7 +118,7 @@ shopbyme/
 
 - **Tailwind CSS:** Configured via `tailwind.config.js` and imported in `index.css`.
 - **Vite:** Used for fast development and build.
-- **Assets:** Product images are stored in `src/assets/`.
+- **Assets:** Product images live in **`src/assets/`**; **`src/photos/`** holds category and marketing visuals referenced from category and layout components.
 
 ---
 
