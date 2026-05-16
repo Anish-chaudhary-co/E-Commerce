@@ -1,6 +1,6 @@
 # ShopByMe – Ecommerce React App
 
-ShopByMe is a modern, responsive ecommerce web application built with React, Vite, and Tailwind CSS. It features a modular component structure, category-based product browsing, a shopping cart, and a clean, user-friendly interface.
+ShopByMe is a modern, responsive E-commerce web application built with React, Vite, and Tailwind CSS. It features a modular component structure, category-based product browsing, a shopping cart, and a clean, user-friendly interface.
 
 ---
 
